@@ -66,9 +66,10 @@ app.get('/api/courses', (req, res) => {
 
 app.get('/api/courses/:id', (req, res) => {
         const course = courses.find(c => c.id === parseInt(req.params.id))
-        if (!course) return res.status(404).send('The course was not found')
+        if (!course) return res.status(404).send('The course was found')
         res.send(course)
 })
 
 const port = process.env.PORT || 3000
 app.listen(port, () => console.log(` Listening on port  ${port} `))
+console.log("")
