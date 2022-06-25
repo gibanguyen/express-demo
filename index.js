@@ -3,6 +3,8 @@ const express = require('express')
 const res = require('express/lib/response')
 const app = express()
 
+app.use(express.json())
+
 const courses = [
     { id: 1, name: "courses_1"},
     { id: 2, name: "courses_2"},
@@ -50,7 +52,7 @@ app.delete('/api/coourses/:id', (req, res) => {
 
 function validateCourse(course){
     const schema = {
-        name: Joi.string().min(3).require()
+        name: Joi.string().min(3).required()
     }
 
     return Joi.validateCourse(course, schema)
